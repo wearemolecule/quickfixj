@@ -630,39 +630,39 @@
       <field name="BlockOnly" required="N"/>
       <field name="AllowFlex" required="N"/>
       <!-- FIELDS BELOW COULD NOT BE FOUND DURING REVERSE ENGINEERING -->
-      <!--field name="UnderlyingCouponRate" required="N"/>            435-->
-    <!-- <field name="UnderlyingDatedDate" required="N"/>             2041-->
-    <!-- <field name="UnderlyingInterestAccrualDate" required="N"/>   2042-->
-    <!-- <field name="UnderlyingIssueDate" required="N"/>             242-->
-    <!-- <field name="UnderlyingRepurchaseRate" required="N"/>        245-->
-    <!-- <field name="UnderlyingFactor" required="N"/>                246-->
-    <!-- <field name="UnderlyingCreditRating" required="N"/>          256-->
-    <!-- <field name="UnderlyingInstrRegistry" required="N"/>         595-->
-    <!-- <field name="UnderlyingStrikePrice" required="N"/>           316-->
-    <!-- <field name="SecurityTradingStatus" required="N"/>           326-->
-    <!-- <field name="UnderlyingCurrency" required="N"/>              318-->
-    <!-- <field name="UnderlyingSettlMethod" required="N"/>           1139-->
-    <!-- <field name="UnderlyingPutOrCall" required="N"/>             315-->
-    <!-- <field name="StrikeExerciseStyle" required="N"/>             1304-->
-    <!-- <field name="BaseNumLots" required="N"/>                     9030-->
-    <!-- <field name="HomeExchange" required="N"/>                    9042-->
-    <!-- <field name="IsDividendAdjusted" required="N"/>              9043-->
-    <!-- <field name="ClearedAlias" required="N"/>                    9091-->
-    <!-- <field name="Denominator" required="N"/>                     9092-->
-    <!-- <field name="InitialMargin" required="N"/>                   9093-->
-    <!-- <field name="ProductType" required="N"/>                     9095-->
-    <!-- <field name="NumOfDecimalStrikePrice" required="N"/>         9185-->
-    <!-- <field name="LegacyTickValue" required="N"/>                 9132-->
-    <!-- <field name="UnderlyingAccruedPremiumAmt" required="N"/>     9900-->
-    <!-- <field name="UnderlyingEventPaymentAmt" required="N"/>       9901-->
-    <!-- <field name="UnderlyingAlignmentInterestRate" required="N"/> 9902-->
-    <!-- <field name="UnderlyingRepurchaseDate" required="N"/>        9903-->
-    <!-- <field name="UnderlyingInterpolationFactor" required="N"/>   9904-->
-    <!-- <field name="HedgeProductID" required="N"/>                  9026-->
-    <!-- <field name="HedgeMarketID" required="N"/>                   9027-->
-    <!-- <field name="HedgeOnly" required="N"/>                       9033-->
-    <!-- <field name="GTAllowed" required="N"/>                       9205-->
-    <!-- <field name="FlexStrikeAllowed" required="N"/>               9206--> 
+      <field name="UnderlyingCouponRate" required="N"/>            
+      <field name="UnderlyingDatedDate" required="N"/>             
+      <field name="UnderlyingInterestAccrualDate" required="N"/>   
+      <field name="UnderlyingIssueDate" required="N"/>             
+      <field name="UnderlyingRepurchaseRate" required="N"/>        
+      <field name="UnderlyingFactor" required="N"/>                
+      <field name="UnderlyingCreditRating" required="N"/>          
+      <field name="UnderlyingInstrRegistry" required="N"/>         
+      <field name="UnderlyingStrikePrice" required="N"/>           
+      <field name="SecurityTradingStatus" required="N"/>           
+      <field name="UnderlyingCurrency" required="N"/>              
+      <field name="UnderlyingSettlMethod" required="N"/>           
+      <field name="UnderlyingPutOrCall" required="N"/>             
+      <field name="StrikeExerciseStyle" required="N"/>             
+      <field name="BaseNumLots" required="N"/>                     
+      <field name="HomeExchange" required="N"/>                    
+      <field name="IsDividendAdjusted" required="N"/>              
+      <field name="ClearedAlias" required="N"/>                    
+      <field name="Denominator" required="N"/>                     
+      <field name="InitialMargin" required="N"/>                   
+      <field name="ProductType" required="N"/>                     
+      <field name="NumOfDecimalStrikePrice" required="N"/>         
+      <field name="LegacyTickValue" required="N"/>                 
+      <field name="UnderlyingAccruedPremiumAmt" required="N"/>     
+      <field name="UnderlyingEventPaymentAmt" required="N"/>       
+      <field name="UnderlyingAlignmentInterestRate" required="N"/> 
+      <field name="UnderlyingRepurchaseDate" required="N"/>        
+      <field name="UnderlyingInterpolationFactor" required="N"/>   
+      <field name="HedgeProductID" required="N"/>                  
+      <field name="HedgeMarketID" required="N"/>                   
+      <field name="HedgeOnly" required="N"/>                       
+      <field name="GTAllowed" required="N"/>                       
+      <field name="FlexStrikeAllowed" required="N"/>               
     </component>
     <component name="InstrumentLeg">
       <field name="LegSymbol" required="N"/>
