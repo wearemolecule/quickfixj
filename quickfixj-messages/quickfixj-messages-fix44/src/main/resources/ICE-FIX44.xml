@@ -209,7 +209,6 @@
         <field name="LegRatioPriceDenominator" required="N"/>
         <field name="LegRatioPriceNumerator" required="N"/>
       </group>
-      <field name="OrigSendingTime" required="Y"/>
     </message>
     <message name="TradeCaptureReportRequest" msgtype="AD" msgcat="app">
       <field name="TradeRequestID" required="Y"/>
