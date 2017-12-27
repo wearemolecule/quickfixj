@@ -148,9 +148,10 @@
       <field name="SecurityResponseID" required="Y"/>
       <field name="SecurityResponseType" required="Y"/>
       <field name="SecurityReqID" required="Y"/>
+      <field name="SecurityID" required="N"/>
       <field name="Symbol" required="N"/>
       <field name="ExchangeSilo" required="N"/>
-      <field name="TotNoRelatedSym" required="N"/>
+      <field name="TotalNumSecurities" required="N"/>
       <field name="NoRpts" required="N"/>
       <field name="ListSeqNo" required="N"/>
       <field name="Text" required="N"/>
@@ -192,18 +193,24 @@
       <field name="NumOfCycles" required="N"/>
       <field name="LotSizeMultiplier" required="N"/>
       <field name="BlockOnly" required="N"/>
-      <field name="AllowFlex" required="N"/>
+      <field name="FlexAllowed" required="N"/>
       <field name="GTAllowed" required="N"/>
       <field name="MiFIDRegulatedMarket" required="N"/>
+      <group name="NoBlockDetails" required="N">
+        <field name="BlockDetailsBlockType" required="N"/>
+        <field name="BlockDetailsTradeType" required="N"/>
+        <field name="BlockDetailsMinQty" required="N"/>
+      </group>
+      <field name="TestMarketIndicator" required="N"/>
       <field name="Text" required="N"/>
       <group name="NoLegs" required="N">
         <field name="LegSymbol" required="N"/>
         <field name="LegSecurityType" required="N"/>
         <field name="LegSide" required="N"/>
-        <field name="LegRatioQty" required="N"/>
+        <field name="LegQuantity" required="N"/>
         <field name="LegPrice" required="N"/>
         <field name="LegSecuritySubType" required="N"/>
-        <field name="LegOptionRatio" required="N"/>
+        <field name="LegOptionDelta" required="N"/>
         <field name="LegRatioQtyDenominator" required="N"/>
         <field name="LegRatioQtyNumerator" required="N"/>
         <field name="LegRatioPriceDenominator" required="N"/>
@@ -586,82 +593,89 @@
         <field name="UnderlyingSecurityAltIDSource" required="N"/> <!-- IN ICE SPEC BUT NOT FOUND DURING TESTING -->
       </group>
       <field name="UnderlyingCFICode" required="N"/>
-      <field name="UnderlyingSecurityDesc" required="N"/>
+      <field name="UnderlyingSecuritySubType" required="N"/>
+      <field name="UnderlyingSecurityDes" required="N"/>
       <field name="UnderlyingSecurityExchange" required="N"/>
       <field name="UnderlyingMaturityDate" required="N"/>
+      <field name="UnderlyingCouponRate" required="N"/>
       <field name="UnderlyingContractMultiplier" required="N"/>
-      <field name="IncrementPrice" required="N"/>
+      <field name="UnderlyingDatedDate" required="N"/>
+      <field name="UnderlyingInterestAccrualDate" required="N"/>
+      <field name="UnderlyingIssueDate" required="N"/>
+      <field name="UnderlyingRepurchaseRate" required="N"/>
+      <field name="UnderlyingFactor" required="N"/>
+      <field name="UnderlyingCreditRating" required="N"/>
+      <field name="UnderlyingInstrRegistry" required="N"/>
+      <field name="StartDate" required="N"/>
+      <field name="EndDate" required="N"/>
+      <field name="UnderlyingUnitOfMeasure" required="N"/>
+      <field name="UnderlyingPutOrCall" required="N"/>
+      <field name="UnderlyingStrikePrice" required="N"/>
+      <field name="SecurityTradingStatus" required="N"/>
+      <field name="UnderlyingCurrency" required="N"/>
+      <field name="UnderlyingSettlMethod" required="N"/>
+      <field name="StrikeExerciseStyle" required="N"/>
       <field name="IncrementQty" required="N"/>
+      <field name="IncrementPrice" required="N"/>
       <field name="OffExchangeIncrementPrice" required="N" />
       <field name="OffExchangeIncrementQty" required="N" />
       <field name="LotSize" required="N"/>
-      <field name="NumOfCycles" required="N"/>
-      <field name="LotSizeMultiplier" required="N"/>
-      <field name="Clearable" required="N"/>
-      <field name="StartDate" required="N"/>
-      <field name="EndDate" required="N"/>
-      <field name="StripId" required="N"/>
-      <field name="StripType" required="N"/>
-      <field name="StripName" required="N"/> <!-- loc doesn't match ICE spec; proper loc unconfirmed -->
-      <field name="HubId" required="N"/>
-      <field name="HubName" required="N"/>  <!-- loc doesn't match ICE spec; proper loc unconfirmed -->
-      <field name="HubAlias" required="N"/>  <!-- loc doesn't match ICE spec; proper loc unconfirmed -->
-      <field name="PhysicalCode" required="N"/>  <!-- loc doesn't match ICE spec; proper loc unconfirmed -->
-      <field name="UnderlyingUnitOfMeasure" required="N"/>
-      <field name="PriceDenomination" required="N"/>
-      <field name="PriceUnit" required="N"/>
-      <field name="Granularity" required="N"/> <!-- loc doesn't match ICE spec; proper loc unconfirmed -->
-      <field name="NumOfDecimalPrice" required="N"/>
-      <field name="NumOfDecimalQty" required="N"/> <!-- loc doesn't match ICE spec; proper loc unconfirmed -->
-      <field name="ProductId" required="N"/>
       <field name="ProductName" required="N"/>
-      <field name="ProductDescription" required="N"/>
+      <field name="ProductDesc" required="N"/>
+      <field name="NumOfDecimalPrice" required="N"/>
+      <field name="NumOfDecimalQty" required="N"/>
+      <field name="Granularity" required="N"/>
+      <field name="BaseNumLots" required="N"/>
       <field name="TickValue" required="N"/>
-      <field name="MiFIDRegulatedMarket" required="N"/>
-      <field name="IncrementStrike" required="N"/>
-      <field name="MinStrike" required="N"/>
-      <field name="MaxStrike" required="N"/>
-      <field name="AONAllowed" required="N"/>
+      <field name="LegacyTickValue" required="N"/>
+      <field name="ProductId" required="N"/>
+      <field name="Clearable" required="N"/>
+      <field name="HedgeProductId" required="N"/>
+      <field name="HedgeMarketID" required="N"/>
+      <field name="HedgeOnly" required="N"/>
+      <field name="HomeExchange" required="N"/>
+      <field name="IsDividendAdjusted" required="N"/>
+      <field name="ClearedAlias" required="N"/>
+      <field name="Denominator" required="N"/>
+      <field name="InitialMargin" required="N"/>
+      <field name="ProductType" required="N"/>
       <field name="ImpliedType" required="N"/>
       <field name="PrimaryLegSymbol" required="N"/>
       <field name="SecondaryLegSymbol" required="N"/>
-      <field name="UnderlyingSecuritySubType" required="N"/>
+      <field name="PriceDenomination" required="N"/>
+      <field name="PriceUnit" required="N"/>
+      <field name="NumOfDecimalStrikePrice" required="N"/>
+      <field name="NumOfCycles" required="N"/>
+      <field name="LotSizeMultiplier" required="N"/>
+      <field name="StripType" required="N"/>
+      <field name="StripId" required="N"/>
+      <field name="StripName" required="N"/>
       <field name="BlockOnly" required="N"/>
-      <field name="AllowFlex" required="N"/>
-      <!-- FIELDS BELOW COULD NOT BE FOUND DURING REVERSE ENGINEERING -->
-      <!--field name="UnderlyingCouponRate" required="N"/>            435-->
-    <!-- <field name="UnderlyingDatedDate" required="N"/>             2041-->
-    <!-- <field name="UnderlyingInterestAccrualDate" required="N"/>   2042-->
-    <!-- <field name="UnderlyingIssueDate" required="N"/>             242-->
-    <!-- <field name="UnderlyingRepurchaseRate" required="N"/>        245-->
-    <!-- <field name="UnderlyingFactor" required="N"/>                246-->
-    <!-- <field name="UnderlyingCreditRating" required="N"/>          256-->
-    <!-- <field name="UnderlyingInstrRegistry" required="N"/>         595-->
-    <!-- <field name="UnderlyingStrikePrice" required="N"/>           316-->
-    <!-- <field name="SecurityTradingStatus" required="N"/>           326-->
-    <!-- <field name="UnderlyingCurrency" required="N"/>              318-->
-    <!-- <field name="UnderlyingSettlMethod" required="N"/>           1139-->
-    <!-- <field name="UnderlyingPutOrCall" required="N"/>             315-->
-    <!-- <field name="StrikeExerciseStyle" required="N"/>             1304-->
-    <!-- <field name="BaseNumLots" required="N"/>                     9030-->
-    <!-- <field name="HomeExchange" required="N"/>                    9042-->
-    <!-- <field name="IsDividendAdjusted" required="N"/>              9043-->
-    <!-- <field name="ClearedAlias" required="N"/>                    9091-->
-    <!-- <field name="Denominator" required="N"/>                     9092-->
-    <!-- <field name="InitialMargin" required="N"/>                   9093-->
-    <!-- <field name="ProductType" required="N"/>                     9095-->
-    <!-- <field name="NumOfDecimalStrikePrice" required="N"/>         9185-->
-    <!-- <field name="LegacyTickValue" required="N"/>                 9132-->
-    <!-- <field name="UnderlyingAccruedPremiumAmt" required="N"/>     9900-->
-    <!-- <field name="UnderlyingEventPaymentAmt" required="N"/>       9901-->
-    <!-- <field name="UnderlyingAlignmentInterestRate" required="N"/> 9902-->
-    <!-- <field name="UnderlyingRepurchaseDate" required="N"/>        9903-->
-    <!-- <field name="UnderlyingInterpolationFactor" required="N"/>   9904-->
-    <!-- <field name="HedgeProductID" required="N"/>                  9026-->
-    <!-- <field name="HedgeMarketID" required="N"/>                   9027-->
-    <!-- <field name="HedgeOnly" required="N"/>                       9033-->
-    <!-- <field name="GTAllowed" required="N"/>                       9205-->
-    <!-- <field name="FlexStrikeAllowed" required="N"/>               9206--> 
+      <field name="FlexAllowed" required="N"/>
+      <field name="GTAllowed" required="N"/>
+      <field name="MiFIDRegulatedMarket" required="N"/>
+      <field name="AONAllowed" required="N"/>
+      <field name="FlexStrikeAllowed" required="N"/>
+      <field name="HubId" required="N"/>
+      <field name="HubName" required="N"/>
+      <field name="HubAlias" required="N"/>
+      <field name="PhysicalCode" required="N"/>
+      <field name="IncrementStrike" required="N"/>
+      <field name="MinStrike" required="N"/>
+      <field name="MaxStrike" required="N"/>
+      <field name="UnderlyingAccruedPremiumAmt" required="N"/>
+      <field name="UnderlyingEventPaymentAmt" required="N"/>
+      <field name="UnderlyingAlignmentInterestRate" required="N"/>
+      <field name="UnderlyingRepurchaseDate" required="N"/>
+      <field name="UnderlyingInterpolationFactor" required="N"/>
+      <group name="NoBlockDetails" required="N">
+        <field name="BlockDetailsBlockType" required="N"/>
+        <field name="BlockDetailsTradeType" required="N"/>
+        <field name="BlockDetailsMinQty" required="N"/>
+      </group>
+      <field name="TestMarketIndicator" required="N"/>
+      <field name="UDSAllowed" required="N"/>
+      <field name="RefSprdProductId" required="N"/>
     </component>
     <component name="InstrumentLeg">
       <field name="LegSymbol" required="N"/>
@@ -702,7 +716,7 @@
       <field name="LegSecurityDesc" required="N"/>
       <field name="EncodedLegSecurityDescLen" required="N"/>
       <field name="EncodedLegSecurityDesc" required="N"/>
-      <field name="LegRatioQty" required="N"/>
+      <field name="LegQuantity" required="N"/>
       <field name="LegSide" required="N"/>
       <field name="LegCurrency" required="N"/>
       <field name="LegPool" required="N"/>
@@ -1133,7 +1147,7 @@
       <value enum="F" description="LEND"/>
       <value enum="G" description="BORROW"/>
     </field>
-    <field number="55" name="Symbol" type="STRING"/>
+    <field number="55" name="Symbol" type="INT"/>
     <field number="56" name="TargetCompID" type="STRING"/>
     <field number="57" name="TargetSubID" type="STRING"/>
     <field number="58" name="Text" type="STRING"/>
@@ -1921,13 +1935,15 @@
       <value enum="2" description="AUTOMATIC"/>
     </field>
     <field number="304" name="TotNoQuoteEntries" type="INT"/>
-    <field number="305" name="UnderlyingSecurityIDSource" type="STRING"/>
+    <field number="305" name="UnderlyingSecurityIDSource" type="INT">
+      <value enum="8" description="EXCHANGE_SYMBOL"/>
+    </field>
     <field number="306" name="UnderlyingIssuer" type="STRING"/>
-    <field number="307" name="UnderlyingSecurityDesc" type="STRING"/>
+    <field number="307" name="UnderlyingSecurityDes" type="STRING"/>
     <field number="308" name="UnderlyingSecurityExchange" type="EXCHANGE"/>
     <field number="309" name="UnderlyingSecurityID" type="STRING"/>
     <field number="310" name="UnderlyingSecurityType" type="STRING"/>
-    <field number="311" name="UnderlyingSymbol" type="STRING"/>
+    <field number="311" name="UnderlyingSymbol" type="INT"/>
     <field number="312" name="UnderlyingSymbolSfx" type="STRING"/>
     <field number="313" name="UnderlyingMaturityMonthYear" type="MONTHYEAR"/>
     <!--  BEGIN ICE CUSTOMIZATION -->
@@ -2140,7 +2156,7 @@
     <field number="390" name="BidID" type="STRING"/>
     <field number="391" name="ClientBidID" type="STRING"/>
     <field number="392" name="ListName" type="STRING"/>
-    <field number="393" name="TotNoRelatedSym" type="INT"/>
+    <field number="393" name="TotalNumSecurities" type="INT"/>
     <field number="394" name="BidType" type="INT">
       <value enum="1" description="NON_DISCLOSED"/>
       <value enum="2" description="DISCLOSED_STYLE"/>
@@ -2860,7 +2876,7 @@
     <field number="620" name="LegSecurityDesc" type="STRING"/>
     <field number="621" name="EncodedLegSecurityDescLen" type="LENGTH"/>
     <field number="622" name="EncodedLegSecurityDesc" type="DATA"/>
-    <field number="623" name="LegRatioQty" type="FLOAT"/>
+    <field number="623" name="LegQuantity" type="FLOAT"/>
     <field number="624" name="LegSide" type="CHAR">
       <value enum="1" description="BUY"/>
       <value enum="2" description="SELL"/>
@@ -3702,14 +3718,14 @@
       <!--  BEGIN ICE CUSTOMIZATION -->
       <field number="996" name="UnitOfMeasure" type="STRING"/>
       <field number="998" name="UnderlyingUnitOfMeasure" type="STRING"/>
-      <field number="1017" name="LegOptionRatio" type="FLOAT"/>
-      <field number="1125" name="OrigTradeDate" type="LOCALMKTDATE"/>
-      <field number="1126" name="OrigTradeID" type="STRING"/>
-      <field number="1127" name="OrigSecondaryTradeID" type="STRING"/>
-      <field number="1139" name="UnderlyingSettlMethod" type="CHAR">
+      <field number="1017" name="LegOptionDelta" type="FLOAT"/>
+      <field number="1039" name="UnderlyingSettlMethod" type="CHAR">
         <value enum="C" description="CASH_OR_FINANCIAL"/>
         <value enum="P" description="PHYSICAL"/>
       </field>
+      <field number="1125" name="OrigTradeDate" type="LOCALMKTDATE"/>
+      <field number="1126" name="OrigTradeID" type="STRING"/>
+      <field number="1127" name="OrigSecondaryTradeID" type="STRING"/>
       <field number="1304" name="StrikeExerciseStyle" type="INT">
         <value enum="0" description="EUROPEAN"/>
         <value enum="1" description="AMERICAN"/>
@@ -3742,7 +3758,7 @@
       <field number="9023" name="LegNumOfCycles" type="INT"/>
       <field number="9024" name="LotSizeMultiplier" type="FLOAT"/>
       <field number="9025" name="Clearable" type="BOOLEAN"/>
-      <field number="9026" name="HedgeProductID" type="INT"/>
+      <field number="9026" name="HedgeProductId" type="INT"/>
       <field number="9027" name="HedgeMarketID" type="INT"/>
       <field number="9028" name="SequenceWithinMillis" type="INT"/>
       <field number="9030" name="BaseNumLots" type="INT"/>
@@ -3757,11 +3773,25 @@
         <value enum="1" description="YES"/>
       </field>
       <field number="9048" name="StrategySecurityID" type="STRING"/>
+      <field number="9049" name="UDSAllowed" type="INT">
+        <value enum="0" description="NO"/>
+        <value enum="1" description="YES"/>
+      </field>
       <field number="9055" name="UnderlyingStrategySymbol" type="STRING"/>
       <field number="9061" name="ProductId" type="INT"/>
       <field number="9062" name="ProductName" type="STRING"/>
-      <field number="9063" name="ProductDescription" type="STRING"/>
+      <field number="9063" name="ProductDesc" type="STRING"/>
       <field number="9064" name="ExchangeSilo" type="INT"/>
+      <field number="9069" name="RefSprdProductId" type="INT"/>
+      <field number="9070" name="NoBlockDetails" type="NUMINGROUP"/>
+      <field number="9071" name="BlockDetailsBlockType" type="INT">
+        <value enum="0" description="REGULAR"/>
+        <value enum="1" description="PNC"/>
+        <value enum="2" description="DP"/>
+        <value enum="3" description="LIS"/>
+      </field>
+      <field number="9072" name="BlockDetailsTradeType" type="STRING"/>
+      <field number="9073" name="BlockDetailsMinQty" type="QTY"/>
       <field number="9083" name="NumOfDecimalPrice" type="FLOAT"/>
       <field number="9084" name="NumOfDecimalQty" type="INT"/>
       <field number="9085" name="Granularity" type="STRING"/>
@@ -3781,11 +3811,15 @@
       <field number="9201" name="StripId" type="INT"/>
       <field number="9202" name="StripName" type="STRING"/>
       <field number="9203" name="BlockOnly" type="INT"/>
-      <field number="9204" name="AllowFlex" type="INT"/>
+      <field number="9204" name="FlexAllowed" type="INT"/>
       <field number="9205" name="GTAllowed" type="INT"/>
       <field number="9206" name="FlexStrikeAllowed" type="INT"/>
       <field number="9215" name="MiFIDRegulatedMarket" type="INT"/>
       <field number="9216" name="AONAllowed" type="INT"/>
+      <field number="9217" name="TestMarketIndicator" type="INT">
+        <value enum="0" description="No"/>
+        <value enum="1" description="Yes"/>
+      </field>
       <field number="9300" name="HubId" type="INT"/>
       <field number="9301" name="HubName" type="STRING"/>
       <field number="9302" name="HubAlias" type="STRING"/>
