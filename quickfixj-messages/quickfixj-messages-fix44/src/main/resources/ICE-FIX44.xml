@@ -58,6 +58,7 @@
       <field name="Password" required="N"/>
       <field name="UserType" required="N"/>
       <field name="StrategyPreference" required="N"/>
+      <field name="PublishClearingAllocations" required="N"/>
       <field name="ApplicationName" required="N"/>
       <field name="ApplicationVersion" required="N"/>
       <field name="ApplicationVendor" required="N"/>
@@ -430,6 +431,61 @@
         </group>
         <field name="LegComplianceID" required="N"/>
         <field name="LegCustOrderHandlingInst" required="N"/>
+      </group>
+    </message>
+    <message name="AllocationReport" msgtype="AS" msgcat="app">
+      <field name="AllocID" required="Y"/>
+      <field name="AllocTransType" required="Y"/>
+      <field name="ClearingBusinessDate" required="Y"/>
+      <field name="AllocReportType" required="Y"/>
+      <field name="AllocStatus" required="Y"/>
+      <group name="NoOrders" required="Y">
+        <field name="ClOrdID" required="N"/>
+      </group>
+      <group name="NoExecs" required="Y">
+        <field name="LastQty" required="Y"/>
+        <field name="ExecID" required="Y"/>
+        <field name="LastPx" required="N"/>
+        <field name="TradeID" required="Y"/>
+        <field name="ClientAppType" required="N"/>
+      </group>
+      <field name="Side" required="Y"/>
+      <field name="TrdType" required="N"/>
+      <field name="Symbol" required="Y"/>
+      <field name="SecurityType" required="N"/>
+      <field name="MaturityMonthYear" required="N"/>
+      <field name="PutOrCall" required="N"/>
+      <field name="StrikePrice" required="N"/>
+      <field name="SecurityExchange" required="N"/>
+      <field name="Quantity" required="Y"/>
+      <field name="AvgPx" required="Y"/>
+      <field name="TradeDate" required="Y"/>
+      <field name="TransactTime" required="Y"/>
+      <field name="Text" required="N"/>
+      <field name="TradeInputSource" required="Y"/>
+      <field name="LiquidityIndicator" required="Y"/>
+      <group name="NoAllocs">
+        <field name="AllocQty" required="Y"/>
+        <field name="AllocAccount" required="N"/>
+        <field name="AllocPrice" required="N"/>
+        <field name="SecondaryIndividualAllocID" required="N"/>
+        <field name="IndividualAllocType" required="Y"/>
+        <field name="AllocCustomerCapacity" required="N"/>
+        <field name="AllocPositionEffect" required="N"/>
+        <field name="AllocText" required="N"/>
+        <field name="SettlementAccountCode" required="N"/>
+        <field name="AllocAcceptanceTime" required="Y"/>
+        <field name="NoAllocInfo" required="Y"/>
+        <field name="AllocSideInfo" required="Y"/>
+        <field name="ClientID" required="Y"/>
+        <field name="BrokerCompID" required="N"/>
+        <field name="OriginatorUserID" required="N"/>
+        <field name="AccountCode" required="N"/>
+        <field name="TMMnemonic" required="Y"/>
+        <field name="RIMnemonic" required="N"/>
+        <field name="CMMnemonic" required="N"/>
+        <field name="ClrHouseCode" required="N"/>
+        <field name="CustomerAccountRefID" required="N"/>
       </group>
     </message>
     <message name="TradeCaptureReportAck" msgtype="AR" msgcat="app">
@@ -1158,6 +1214,7 @@
       <value enum="3" description="PRELIMINARY"/>
       <value enum="4" description="CALCULATED"/>
       <value enum="5" description="CALCULATED_WITHOUT_PRELIMINARY"/>
+      <value enum="6" description="REVERSAL"/>
     </field>
     <field number="72" name="RefAllocID" type="STRING"/>
     <field number="73" name="NoOrders" type="NUMINGROUP"/>
@@ -1285,6 +1342,7 @@
     <field number="106" name="Issuer" type="STRING"/>
     <field number="107" name="SecurityDesc" type="STRING"/>
     <field number="108" name="HeartBtInt" type="INT"/>
+    <field number="109" name="ClientID" type="INT"/>
     <field number="110" name="MinQty" type="QTY"/>
     <field number="111" name="MaxFloor" type="QTY"/>
     <field number="112" name="TestReqID" type="STRING"/>
@@ -1524,6 +1582,7 @@
     <field number="198" name="SecondaryOrderID" type="STRING"/>
     <field number="199" name="NoIOIQualifiers" type="NUMINGROUP"/>
     <field number="200" name="MaturityMonthYear" type="MONTHYEAR"/>
+    <field number="201" name="PutOrCall" type="INT"/>
     <field number="202" name="StrikePrice" type="PRICE"/>
     <field number="203" name="CoveredOrUncovered" type="INT">
       <value enum="0" description="COVERED"/>
@@ -3262,10 +3321,15 @@
     </field>
     <field number="793" name="SecondaryAllocID" type="STRING"/>
     <field number="794" name="AllocReportType" type="INT">
+      <value enum="2" description="PRELIMINARY_REQUEST_TO_INTERMEDIARY"/>
       <value enum="3" description="SELLSIDE_CALCULATED_USING_PRELIMINARY"/>
       <value enum="4" description="SELLSIDE_CALCULATED_WITHOUT_PRELIMINARY"/>
       <value enum="5" description="WAREHOUSE_RECAP"/>
       <value enum="8" description="REQUEST_TO_INTERMEDIARY"/>
+      <value enum="9" description="ACCEPT"/>
+      <value enum="10" description="REJECT"/>
+      <value enum="12" description="COMPLETE"/>
+      <value enum="14" description="REVERSE_PENDING"/>
     </field>
     <field number="795" name="AllocReportRefID" type="STRING"/>
     <field number="796" name="AllocCancReplaceReason" type="INT">
@@ -3677,14 +3741,22 @@
       <field number="955" name="LegContractSettlMonth" type="MONTHYEAR"/>
       <field number="956" name="LegInterestAccrualDate" type="LOCALMKTDATE"/>
       <!--  BEGIN ICE CUSTOMIZATION -->
+      <field number="989" name="SecondaryIndividualAllocID" type="INT"/>
+      <field number="992" name="IndividualAllocType" type="CHAR">
+        <value enum="2" description="GIVE_UP_ALLOCATION"/>
+        <value enum="3" description="TAKE_UP_ALLOCATION"/>
+      </field>
+      <field number="993" name="AllocCustomerCapacity" type="INT"/>
       <field number="996" name="UnitOfMeasure" type="STRING"/>
       <field number="998" name="UnderlyingUnitOfMeasure" type="STRING"/>
+      <field number="1003" name="TradeID" type="STRING"/>
       <field number="1017" name="LegOptionDelta" type="FLOAT"/>
       <field number="1031" name="CustOrderHandlingInst" type="STRING"/>
       <field number="1039" name="UnderlyingSettlMethod" type="CHAR">
         <value enum="C" description="CASH_OR_FINANCIAL"/>
         <value enum="P" description="PHYSICAL"/>
       </field>
+      <field number="1047" name="AllocPositionEffect" type="CHAR"/>
       <field number="1125" name="OrigTradeDate" type="LOCALMKTDATE"/>
       <field number="1126" name="OrigTradeID" type="STRING"/>
       <field number="1127" name="OrigSecondaryTradeID" type="STRING"/>
@@ -3709,6 +3781,10 @@
       <field number="9006" name="StrategyPreference" type="INT">
         <value enum="0" description="LEGACY_STRATEGY_INFORMATION"/>
         <value enum="1" description="NEW_STRATEGY_INFORMATION"/>
+      </field>
+      <field number="9008" name="PublishClearingAllocations" type="INT">
+        <value enum="0" description="DO_NOT_SEND_CLEARING_ALLOCATION_MESSAGES"/>
+        <value enum="1" description="SEND_CLEARING_ALLOCATION_MESSAGES"/>
       </field>
       <field number="9013" name="IncrementPrice" type="FLOAT"/>
       <field number="9014" name="IncrementQty" type="FLOAT"/>
@@ -3741,10 +3817,12 @@
         <value enum="1" description="YES"/>
       </field>
       <field number="9055" name="UnderlyingStrategySymbol" type="STRING"/>
+      <field number="9060" name="AllocAcceptanceTime" type="UTCTIMESTAMP"/>
       <field number="9061" name="ProductId" type="INT"/>
       <field number="9062" name="ProductName" type="STRING"/>
       <field number="9063" name="ProductDesc" type="STRING"/>
       <field number="9064" name="ExchangeSilo" type="INT"/>
+      <field number="9065" name="BrokerCompID" type="INT"/>
       <field number="9069" name="RefSprdProductId" type="INT"/>
       <field number="9070" name="NoBlockDetails" type="NUMINGROUP"/>
       <field number="9071" name="BlockDetailsBlockType" type="INT">
@@ -3765,11 +3843,24 @@
       <field number="9095" name="ProductType" type="STRING"/>
       <field number="9100" name="PriceDenomination" type="STRING"/>
       <field number="9101" name="PriceUnit" type="STRING"/>
+      <field number="9103" name="TMMnemonic" type="STRING"/>
+      <field number="9120" name="LiquidityIndicator" type="CHAR">
+        <value enum="A" description="ADDED_LIQUIDITY"/>
+        <value enum="R" description="REMOVED_LIQUIDITY"/>
+      </field>
       <field number="9121" name="MemoField" type="STRING"/>
       <field number="9122" name="LegMemoField" type="STRING"/>
       <field number="9123" name="TransactDetails" type="STRING"/>
       <field number="9132" name="LegacyTickValue" type="FLOAT"/>
+      <field number="9139" name="OriginatorUserID" type="STRING"/>
+      <field number="9140" name="NoAllocInfo" type="INT"/>
+      <field number="9141" name="AllocSideInfo" type="INT">
+        <value enum="0" description="GIVE_UP"/>
+        <value enum="1" description="TAKE_UP"/>
+      </field>
       <field number="9185" name="NumOfDecimalStrikePrice" type="FLOAT"/>
+      <field number="9194" name="SettlementAccountCode" type="STRING"/>
+      <field number="9195" name="AccountCode" type="CHAR"/>
       <field number="9200" name="StripType" type="INT"/>
       <field number="9201" name="StripId" type="INT"/>
       <field number="9202" name="StripName" type="STRING"/>
@@ -3777,6 +3868,7 @@
       <field number="9204" name="FlexAllowed" type="INT"/>
       <field number="9205" name="GTAllowed" type="INT"/>
       <field number="9206" name="FlexStrikeAllowed" type="INT"/>
+      <field number="9207" name="CustomerAccountRefID" type="STRING"/>
       <field number="9215" name="MiFIDRegulatedMarket" type="INT"/>
       <field number="9216" name="AONAllowed" type="INT"/>
       <field number="9217" name="TestMarketIndicator" type="INT">
@@ -3819,6 +3911,9 @@
       <field number="9567" name="LegRatioPriceNumerator" type="INT"/>
       <field number="9623" name="LegRatioQtyDenominator" type="INT"/>
       <field number="9624" name="LegRatioQtyNumerator" type="INT"/>
+      <field number="9603" name="RIMnemonic" type="STRING"/>
+      <field number="9604" name="CMMnemonic" type="STRING"/>
+      <field number="9609" name="ClrHouseCode" type="STRING"/>
       <field number="9669" name="LegParPx" type="FLOAT"/>
       <field number="9700" name="DirectElectronicAccess" type="INT"/>
       <field number="9701" name="TradingCapacity" type="STRING"/>
